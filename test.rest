@@ -1,5 +1,5 @@
 @url = http://localhost:4206
 	
-### FETCH ALL EMPLOYEES
-GET {{url}}/employees
+### FETCH ALL JOBS
+GET {{url}}/jobs
 	
