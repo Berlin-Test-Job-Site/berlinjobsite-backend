@@ -1,8 +1,9 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import express from 'express';
-import cors from 'cors';
-import { employeeRouter } from './routers/employeeRouter';
-import dotenv from 'dotenv';
+import express from "express";
+import cors from "cors";
+import { employeeRouter } from "./routers/employeeRouter";
+import dotenv from "dotenv";
+import * as tools from "./tools";
 
 dotenv.config();
 
@@ -10,7 +11,7 @@ export const app = express();
 app.use(express.json());
 app.use(cors());
 
-app.get('/', (req, res) => {
+app.get("/", (req, res) => {
 	res.send(`
 <html>
 	<body>
@@ -20,8 +21,11 @@ app.get('/', (req, res) => {
 	</ul>
 	</body>
 </html>
-	`)
-
+	`);
 });
 
-app.use('/employees', employeeRouter);
+app.get("/jobs", (req, res) => {
+	res.json(tools.getJobs());
+});
+
+app.use("/employees", employeeRouter);
